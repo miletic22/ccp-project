@@ -22,6 +22,7 @@ class Company(Base):
     __tablename__ = 'companies'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, nullable=False)
+    user_type = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
     company_name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     surname = sqlalchemy.Column(sqlalchemy.String, nullable=False)
