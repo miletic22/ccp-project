@@ -1,9 +1,20 @@
 from fastapi import FastAPI
-
 #from .routers import auth, budget, category, transaction, user
 from fastapi.middleware.cors import CORSMiddleware
+from .database import engine, SessionLocal
+from . import  models
+
+models.Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 origins = ["*"]
 app.add_middleware(

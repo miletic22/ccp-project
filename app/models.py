@@ -1,9 +1,6 @@
-from sqlalchemy.sqlalchemy.orm import relationship
-from sqlalchemy.sqlalchemy.sql.expression import text
-from sqlalchemy.sqlalchemy.sql.sqltypes import TIMESTAMP
+from sqlalchemy.orm import relationship
 from .database import Base
-
-import sqlalchemy.sqlalchemy as sqlalchemy
+import sqlalchemy as sqlalchemy
 
 
 class User(Base):
@@ -11,8 +8,8 @@ class User(Base):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, nullable=False)
     email = sqlalchemy.Column(sqlalchemy.String, nullable=False, unique=True)
     password = sqlalchemy.Column(sqlalchemy.String, nullable=False)
-    created_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
-    updated_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+    created_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=False, server_default=sqlalchemy.func.now())
+    updated_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=False, server_default=sqlalchemy.func.now())
     deleted_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=True)
     
     company_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('companies.id'))
