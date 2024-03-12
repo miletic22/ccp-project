@@ -9,7 +9,7 @@ class User(Base):
     email = sqlalchemy.Column(sqlalchemy.String, nullable=False, unique=True)
     password = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     created_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=False, server_default=sqlalchemy.func.now())
-    updated_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=False, server_default=sqlalchemy.func.now())
+    updated_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=False)
     deleted_at = sqlalchemy.Column(sqlalchemy.TIMESTAMP(timezone=True), nullable=True)
     
     company_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('companies.id'))
