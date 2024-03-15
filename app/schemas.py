@@ -1,6 +1,5 @@
 from datetime import datetime
-from typing import Optional
-
+from typing import Optional, List
 from pydantic import BaseModel, EmailStr
 
 
@@ -26,3 +25,31 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     id: Optional[int] = None
+    
+
+class Client(BaseModel):
+    company_name: str
+    name: str
+    surname: str
+    position: str
+    development_stage: str
+    operation_location: str
+    previous_investors: List[str]
+    business_model: str
+    market_focus: str
+    sales_revenue: float
+    sales_growth: float
+    netprofit: float
+    netprofit_growth: float
+    users_number: int
+    users_growth: float
+    costs: float
+    cost_growth: float
+    industry_classification: str
+    funding_amount: float
+    funding_stage: str
+    problem_solution: str
+    website_url: str
+    startup_name: str
+    funding_purpose: str
+    competition: List[str]
